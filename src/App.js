@@ -1,29 +1,30 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
+import Form from './components/PhonebookForm';
+import ContactList from './components/ContactList';
 
 // const state = {
 //   contacts: [],
 //   name: '',
 // };
 
-function App() {
-  const [count, setCount] = useState([]);
-
-  const handleAddContact = e => {
-    console.log(e.target.value);
-  };
+const App = () => {
+  // eslint-disable-next-line
+  const [contacts, setContacts] = useState([]);
+  // eslint-disable-next-line
+  const [name, setName] = useState('ee');
 
   return (
-    <Fragment>
-      <p>{count}</p>
-      <form>
-        <input type="text" onChange={handleAddContact} />
-        <button type="button" onClick={handleAddContact}>
-          Добавить
-        </button>
-      </form>
-      <span></span>
-    </Fragment>
+    <div>
+      <h1>Phonebook</h1>
+      <Form name={name} contacts={contacts} />
+      <h2>Contacts</h2>
+      <ContactList
+      // contacts={contacts}
+      // onDelete={handleDeleteContact}
+      // onToggle={handleToggleContact}
+      />
+    </div>
   );
-}
+};
 
 export default App;
