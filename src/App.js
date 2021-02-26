@@ -8,20 +8,29 @@ import ContactList from './components/ContactList';
 // };
 
 const App = () => {
-  // eslint-disable-next-line
   const [contacts, setContacts] = useState([]);
-  // eslint-disable-next-line
-  const [name, setName] = useState('ee');
+  const [name, setName] = useState('');
+
+  const handleSubmit = newContact => {
+    console.log(newContact);
+    setContacts(prevState => [newContact, ...prevState]);
+  };
 
   return (
     <div>
       <h1>Phonebook</h1>
-      <Form name={name} contacts={contacts} />
+      <Form
+        // className={}
+        name={name}
+        setContacts={setContacts}
+        setName={setName}
+        onSubmit={handleSubmit}
+      />
       <h2>Contacts</h2>
       <ContactList
-      // contacts={contacts}
-      // onDelete={handleDeleteContact}
-      // onToggle={handleToggleContact}
+        contacts={contacts}
+        // onDelete={handleDeleteContact}
+        // onToggle={handleToggleContact}
       />
     </div>
   );

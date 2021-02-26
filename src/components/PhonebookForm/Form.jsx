@@ -2,27 +2,28 @@ import React from 'react';
 // import FormInput from './FormInput';
 import { v4 as uuidv4 } from 'uuid';
 
-const Form = ({ name, contacts }) => {
-  console.log(name);
-  console.log(contacts);
+const Form = ({ name, contacts, setContacts, setName, onSubmit }) => {
+  // Записывает значение инпута в стейт
+  const handleInputChange = e => setName(e.target.value);
 
   const handleAddContact = e => {
     e.preventDefault();
 
-    console.log('name:', e.target.value);
-    console.log('id', uuidv4());
-
-    return {
-      name: e.target,
+    const newContact = {
       id: uuidv4(),
-      useState: 'useState',
+      name: name,
     };
+
+    onSubmit(newContact);
+    setName('');
   };
 
   return (
     <form>
-      {/* <FormInput onAddContact={handleAddContact} /> */}
-      <input type="text" />
+      <label>
+        Name
+        <input type="text" value={name} onChange={handleInputChange} />
+      </label>
       <button tupe="submit" onClick={handleAddContact}>
         Add contact
       </button>
