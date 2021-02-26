@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Form from './components/PhonebookForm';
 import ContactList from './components/ContactList';
+import { wrapper, title } from './App.module.scss';
 
 // const state = {
 //   contacts: [],
@@ -17,8 +18,8 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Phonebook</h1>
+    <div className={wrapper}>
+      <h1 className={title}>Phonebook</h1>
       <Form
         // className={}
         name={name}

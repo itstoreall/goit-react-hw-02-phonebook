@@ -1,6 +1,7 @@
 import React from 'react';
 // import FormInput from './FormInput';
 import { v4 as uuidv4 } from 'uuid';
+import { form, label, input, button } from './Form.module.scss';
 
 const Form = ({ name, contacts, setContacts, setName, onSubmit }) => {
   // Записывает значение инпута в стейт
@@ -19,12 +20,17 @@ const Form = ({ name, contacts, setContacts, setName, onSubmit }) => {
   };
 
   return (
-    <form>
-      <label>
+    <form className={form}>
+      <label className={label}>
         Name
-        <input type="text" value={name} onChange={handleInputChange} />
+        <input
+          className={input}
+          type="text"
+          value={name}
+          onChange={handleInputChange}
+        />
       </label>
-      <button tupe="submit" onClick={handleAddContact}>
+      <button className={button} tupe="submit" onClick={handleAddContact}>
         Add contact
       </button>
     </form>
