@@ -12,10 +12,13 @@ const App = () => {
   // Записывает значения инпута в стейт
   const handleInputFilter = e => setFilter(e.target.value);
 
-  // Добавление нового контакта в стате
-  const handleSubmit = newContact => {
-    setContacts(prevState => [newContact, ...prevState]);
-  };
+  // Добавляет новый контакт в стейт
+  const handleSubmit = newContact =>
+    contacts.find(
+      ({ name }) => name.toLowerCase() === newContact.name.toLowerCase(),
+    )
+      ? alert(`${newContact.name} is already in contacts.`)
+      : setContacts(prevState => [newContact, ...prevState]);
 
   // Фильтрация контактов
   const normalizedFilter = filter.toLowerCase();
