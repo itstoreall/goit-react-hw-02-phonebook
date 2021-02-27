@@ -1,6 +1,4 @@
 .form {
-  // display: inline-flex;
-  // flex-direction: column;
   padding: 20px;
   width: 100%;
   max-width: 745px;
@@ -19,8 +17,6 @@
       position: absolute;
       left: 0;
       bottom: 0;
-      // padding-top: 5px;
-      // padding-bottom: 3px;
       padding-left: 5px;
       width: 285px;
       height: 40px;
@@ -29,8 +25,6 @@
 
       &:focus {
         padding-left: 4px;
-        // padding-top: 2px;
-        // padding-bottom: 1px;
         border: 3px solid rgba(196, 225, 252, 0.616);
         box-shadow: 0px 0px 3px 3px rgba(83, 171, 253, 0.459);
         box-shadow: 0px 0px 6px 6px rgba(83, 171, 253, 0.466);
@@ -41,7 +35,6 @@
 
   .button {
     padding: 5px 15px 3px 14px;
-    // max-width: 165px;
     font-size: 25px;
     letter-spacing: 0.8px;
     border: 1px solid #ccc;

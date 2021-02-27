@@ -1,33 +1,16 @@
 import React, { useState } from 'react';
 import Form from './components/PhonebookForm';
 import ContactList from './components/ContactList';
-import baseData from './components/Data/baseData.json';
+import Filter from './components/Filter';
+import dataBase from './components/dataBase/dataBase.json';
 import { wrapper, title, subtitle } from './App.module.scss';
 
 const App = () => {
-  const [contacts, setContacts] = useState(baseData);
+  const [contacts, setContacts] = useState(dataBase);
   const [filter, setFilter] = useState('');
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
 
   // Записывает значения инпута в стейт
-  const handleInputChange = e => {
-    const { name, value } = e.target;
-
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setNumber(value);
-        break;
-      case 'filter':
-        setFilter(value);
-        break;
-      default:
-        break;
-    }
-  };
+  const handleInputFilter = e => setFilter(e.target.value);
 
   // Добавление нового контакта в стате
   const handleSubmit = newContact => {
@@ -43,19 +26,13 @@ const App = () => {
   return (
     <div className={wrapper}>
       <h1 className={title}>Phonebook</h1>
-      <Form
-        name={name}
-        number={number}
-        setName={setName}
-        setNumber={setNumber}
-        onInputChange={handleInputChange}
-        onSubmit={handleSubmit}
-      />
+      <Form onInputChange={handleInputFilter} onSubmit={handleSubmit} />
       <h2 className={subtitle}>Contacts</h2>
+      <Filter value={filter} onChange={handleInputFilter} />
       <ContactList
         contacts={filteredContacts}
         filter={filter}
-        onInputChange={handleInputChange}
+        onInputChange={handleInputFilter}
       />
     </div>
   );
