@@ -11,6 +11,7 @@ import { wrapper, title, subtitle } from './App.module.scss';
 const App = () => {
   const [contacts, setContacts] = useState([]);
   const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
   const handleSubmit = newContact => {
     console.log(newContact);
@@ -23,8 +24,9 @@ const App = () => {
       <Form
         // className={}
         name={name}
-        setContacts={setContacts}
+        number={number}
         setName={setName}
+        setNumber={setNumber}
         onSubmit={handleSubmit}
       />
       <h2 className={subtitle}>Contacts</h2>

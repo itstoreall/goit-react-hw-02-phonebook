@@ -4,7 +4,9 @@ import { contactItem } from './Contacts.module.scss';
 const ContactItem = ({ contact }) => {
   return (
     <Fragment>
-      <li className={contactItem}>{contact.name}</li>
+      <li className={contactItem}>
+        {contact.name}: {contact.number}
+      </li>
     </Fragment>
   );
 };
