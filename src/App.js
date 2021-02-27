@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Form from './components/PhonebookForm';
 import ContactList from './components/ContactList';
-import { wrapper, title } from './App.module.scss';
+import { wrapper, title, subtitle } from './App.module.scss';
 
 // const state = {
 //   contacts: [],
@@ -27,7 +27,7 @@ const App = () => {
         setName={setName}
         onSubmit={handleSubmit}
       />
-      <h2>Contacts</h2>
+      <h2 className={subtitle}>Contacts</h2>
       <ContactList
         contacts={contacts}
         // onDelete={handleDeleteContact}
