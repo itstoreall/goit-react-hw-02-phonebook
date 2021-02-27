@@ -3,12 +3,19 @@ import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { form, label, input, button } from './Form.module.scss';
 
-const Form = ({ name, number, setName, setNumber, onSubmit }) => {
+const Form = ({
+  name,
+  number,
+  setName,
+  setNumber,
+  onInputChange,
+  onSubmit,
+}) => {
   // Записывает значение инпута в стейт
-  const handleInputChange = e => {
-    const { name, value } = e.target;
-    name === 'name' ? setName(value) : setNumber(value);
-  };
+  // const handleInputChange = e => {
+  //   const { name, value } = e.target;
+  //   name === 'name' ? setName(value) : setNumber(value);
+  // };
 
   const handleAddContact = e => {
     e.preventDefault();
@@ -33,7 +40,7 @@ const Form = ({ name, number, setName, setNumber, onSubmit }) => {
           type="text"
           name="name"
           value={name}
-          onChange={handleInputChange}
+          onChange={onInputChange}
         />
       </label>
       <label className={label}>
@@ -43,7 +50,7 @@ const Form = ({ name, number, setName, setNumber, onSubmit }) => {
           type="text"
           name="number"
           value={number}
-          onChange={handleInputChange}
+          onChange={onInputChange}
         />
       </label>
       <button className={button} tupe="submit" onClick={handleAddContact}>
