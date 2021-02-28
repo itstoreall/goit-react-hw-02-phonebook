@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import Form from './components/PhonebookForm';
 import ContactList from './components/ContactList';
 import Filter from './components/Filter';
-import dataBase from './components/dataBase/dataBase.json';
+import PropTypes from 'prop-types';
+
 import { wrapper, title, subtitle } from './App.module.scss';
 
-const App = () => {
-  const [contacts, setContacts] = useState(dataBase);
+const App = ({ initialValue }) => {
+  const [contacts, setContacts] = useState(initialValue);
   const [filter, setFilter] = useState('');
 
   // Записывает значения инпута в стейт
@@ -26,6 +27,9 @@ const App = () => {
     contact.name.toLowerCase().includes(normalizedFilter),
   );
 
+  const handleDeleteContact = id =>
+    setContacts(contacts.filter(contact => contact.id !== id));
+
   return (
     <div className={wrapper}>
       <h1 className={title}>Phonebook</h1>
@@ -36,9 +40,24 @@ const App = () => {
         contacts={filteredContacts}
         filter={filter}
         onInputChange={handleInputFilter}
+        onDeleteContact={handleDeleteContact}
       />
     </div>
   );
+};
+
+App.defaultProps = {
+  initialValue: [],
+};
+
+App.propTypes = {
+  initialValue: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 export default App;

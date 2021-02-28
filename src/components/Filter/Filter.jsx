@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { label, input } from './Filter.module.scss';
 
 const Filter = ({ value, onChange }) => {
@@ -8,6 +8,11 @@ const Filter = ({ value, onChange }) => {
       <input className={input} value={value} onChange={onChange} />
     </label>
   );
+};
+
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Filter;

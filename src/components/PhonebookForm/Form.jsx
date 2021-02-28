@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 import { form, label, input, button } from './Form.module.scss';
 
 const Form = ({ onSubmit }) => {
@@ -54,6 +55,10 @@ const Form = ({ onSubmit }) => {
       </button>
     </form>
   );
+};
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Form;
